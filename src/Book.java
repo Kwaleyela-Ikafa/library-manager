@@ -6,6 +6,13 @@ public class Book implements LibraryItem {
     private String genre;
     private String availability;
 
+    public Book(String title, String author, String genre, String availability) {
+        setTitle(title);
+        setAuthor(author);
+        setGenre(genre);
+        setAvailability(availability);
+    }
+
     public String getAuthor() {
         return author;
     }
