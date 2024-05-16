@@ -56,11 +56,21 @@ public class Book implements LibraryItem {
 
     @Override
     public void checkOut() {
-
+        if (available) {
+            available = false;
+            System.out.println("Book '" + title + "' checked out successfully.");
+        } else {
+            System.out.println("Book '" + title + "' is not available for checkout.");
+        }
     }
 
     @Override
     public void checkIn() {
-
+        if (!available) {
+            available = true;
+            System.out.println("Book '" + title + "' checked in successfully.");
+        } else {
+            System.out.println("Book '" + title + "' is already checked in.");
+        }
     }
 }
