@@ -1,6 +1,8 @@
 import interfaces.LibraryItem;
 
-public class Library implements LibraryItem {
+import java.util.List;
+
+public class Library {
     public void addBook(Book book) {
 
     }
@@ -9,21 +11,16 @@ public class Library implements LibraryItem {
 
     }
 
-    public Book searchBook(String book) {
+    public String searchBookByTitle(String title) {
         return null;
     }
 
-    public Book getBooks() {
+    public String searchBookByAuthor(String author) {
         return null;
     }
 
-    @Override
-    public void checkOut() {
-
+    public List<Book> displayAvailableBooks() {
+        return null;
     }
 
-    @Override
-    public void checkIn() {
-
-    }
 }
