@@ -9,16 +9,21 @@ public class Library {
     List<Book> books = new ArrayList<>();
 
     public void addBook(Book book) {
-        this.books.add(book);
+        books.add(book);
+        System.out.println("Book '" + book.getTitle() + "' added to the library.");
     }
 
     public void removeBook(Book book) {
-        this.books.remove(book);
+        if (books.remove(book)) {
+            System.out.println("Book '" + book.getTitle() + "' removed from the library.");
+        } else {
+            System.out.println("Book '" + book.getTitle() + "' not found in the library.");
+        }
     }
 
     public Book searchBookByTitle(String title) {
-        for(Book book : books) {
-            if(book.getTitle().equalsIgnoreCase(title) && !book.isAvailable()) {
+        for (Book book : books) {
+            if (book.getTitle().equalsIgnoreCase(title)) {
                 return book;
             }
         }
@@ -27,21 +32,20 @@ public class Library {
 
     public Book searchBookByAuthor(String author) {
         for(Book book : books) {
-            if(book.getAuthor().equalsIgnoreCase(author) && !book.isAvailable()) {
+            if(book.getAuthor().equalsIgnoreCase(author)) {
                 return book;
             }
         }
         return null;
     }
 
-    public List<Book> displayAvailableBooks() {
-        List<Book> availableBooks = new ArrayList<>();
-        for(Book book : books) {
-            if(book.isAvailable()) {
-                availableBooks.add(book);
+    public void displayAvailableBooks() {
+        System.out.println("Available Books:");
+        for (Book book : books) {
+            if (book.isAvailable()) {
+                System.out.println(book.getTitle() + " by " + book.getAuthor());
             }
         }
-        return availableBooks;
     }
 
     public void checkInBook(String title) {
