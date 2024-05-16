@@ -1,49 +1,58 @@
+import enums.Genre;
 import interfaces.LibraryItem;
 
 public class Book implements LibraryItem {
     private String title;
     private String author;
-    private String genre;
-    private String availability;
+    private Genre genre;
 
-    public Book(String title, String author, String genre, String availability) {
+    public Book(String title, String author, Genre genre) {
         setTitle(title);
         setAuthor(author);
         setGenre(genre);
-        setAvailability(availability);
     }
 
+    public Book(Book source) {
+        setTitle(source.title);
+        setAuthor(source.author);
+        setGenre(source.genre);
+    }
+
+    // Setters
+    public void setAuthor(String author) {
+        if (author.isBlank() || author.isEmpty()) {
+            throw new IllegalArgumentException("Author Cannot be null or blank");
+        }
+        this.author = author;
+    }
+
+    public void setTitle(String title) {
+        if (title.isBlank() || title.isEmpty()) {
+            throw new IllegalArgumentException("Title Cannot be null or blank");
+        }
+        this.title = title;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+
+    // Getters
     public String getAuthor() {
         return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getGenre() {
+    public Genre getGenre() {
         return genre;
     }
 
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public String getAvailability() {
-        return availability;
-    }
-
-    public void setAvailability(String availability) {
-        this.availability = availability;
-    }
+//    public String getAvailability() {
+//        return availability;
+//    }
 
     @Override
     public void checkOut() {
