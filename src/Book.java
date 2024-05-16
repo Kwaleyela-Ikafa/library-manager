@@ -5,17 +5,13 @@ public class Book implements LibraryItem {
     private String title;
     private String author;
     private Genre genre;
+    private boolean available;
 
     public Book(String title, String author, Genre genre) {
         setTitle(title);
         setAuthor(author);
         setGenre(genre);
-    }
-
-    public Book(Book source) {
-        setTitle(source.title);
-        setAuthor(source.author);
-        setGenre(source.genre);
+        this.available = true;
     }
 
     // Setters
@@ -37,6 +33,10 @@ public class Book implements LibraryItem {
         this.genre = genre;
     }
 
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
+
     // Getters
     public String getAuthor() {
         return author;
@@ -50,9 +50,9 @@ public class Book implements LibraryItem {
         return genre;
     }
 
-//    public String getAvailability() {
-//        return availability;
-//    }
+    public boolean isAvailable() {
+        return available;
+    }
 
     @Override
     public void checkOut() {
